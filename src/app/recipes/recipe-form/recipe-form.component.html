@@ -1,0 +1,50 @@
+<form [formGroup]="recipeForm" (ngSubmit)="onSubmit()" class="recipe-form">
+    <mat-form-field appearance="fill">
+      <mat-label>Название рецепта</mat-label>
+      <input matInput formControlName="title">
+    </mat-form-field>
+  
+    <div formArrayName="ingredients">
+      <div *ngFor="let ingredient of ingredients.controls; let i = index" [formGroupName]="i" class="ingredient-group">
+        <mat-form-field appearance="fill">
+          <mat-label>Ингредиент</mat-label>
+          <input matInput formControlName="name">
+        </mat-form-field>
+  
+        <mat-form-field appearance="fill">
+          <mat-label>Количество</mat-label>
+          <input matInput type="number" formControlName="quantity" min="1">
+        </mat-form-field>
+  
+        <mat-form-field appearance="fill">
+          <mat-label>Единица измерения</mat-label>
+          <mat-select formControlName="unit">
+            <mat-option *ngFor="let unit of units" [value]="unit">{{ unit }}</mat-option>
+          </mat-select>
+        </mat-form-field>
+  
+        <button mat-icon-button color="warn" type="button" (click)="removeIngredient(i)">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </div>
+    </div>
+  
+    <button mat-button color="primary" type="button" (click)="addIngredient()">
+      Добавить ингредиент
+    </button>
+  
+    <mat-form-field appearance="fill">
+      <mat-label>Описание приготовления</mat-label>
+      <textarea matInput formControlName="description"></textarea>
+    </mat-form-field>
+  
+    <mat-form-field appearance="fill">
+      <mat-label>Ссылка на изображение</mat-label>
+      <input matInput formControlName="imageUrl">
+    </mat-form-field>
+  
+    <button mat-raised-button color="primary" type="submit">
+      {{ isEditMode ? 'Обновить рецепт' : 'Создать рецепт' }}
+    </button>
+  </form>
+  

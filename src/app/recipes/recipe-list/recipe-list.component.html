@@ -1,0 +1,22 @@
+<div class="recipe-list">
+  <ul>
+    <div *ngFor="let recipe of recipes" (click)="viewRecipe(recipe.id)">
+      <div style="display: flex; align-items: center;">
+        <img *ngIf="recipe.imageUrl" [src]="recipe.imageUrl" alt="Изображение рецепта" class="recipe-thumb">
+        <div mat-line class="recipe-info">
+          <h3 mat-line>{{ recipe.title }}</h3>
+          <p mat-line>Создан: {{ recipe.createdAt.toDate() | date:'short' }}</p>
+        </div>
+      </div>
+        <button mat-icon-button color="accent" [routerLink]="['/recipes', recipe.id, 'edit']">
+          <mat-icon>edit</mat-icon>
+        </button>
+        <button mat-icon-button color="warn" (click)="confirmDelete(recipe)">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </div>
+    </ul>
+  <div class="create-button">
+    <button mat-raised-button color="primary" routerLink="/recipes/new">Создать рецепт</button>
+  </div>
+</div>
