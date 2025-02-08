@@ -1,0 +1,15 @@
+.recipe-form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    max-width: 600px;
+    margin: auto;
+    margin-top: 30px;
+  }
+  
+  .ingredient-group {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+  

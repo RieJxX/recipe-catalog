@@ -1,0 +1,21 @@
+.recipe-list {
+  max-width: 800px;
+  margin: auto;
+  padding: 16px;
+}
+
+.recipe-thumb {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  margin-right: 16px;
+}
+
+.recipe-info {
+  flex: 1;
+}
+
+.create-button {
+  margin-top: 16px;
+  text-align: center;
+}
